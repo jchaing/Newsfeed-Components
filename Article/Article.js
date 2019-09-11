@@ -158,6 +158,8 @@ function createArticle(articleData) {
   const secondP = document.createElement('p');
   const thirdP = document.createElement('p');
   const span = document.createElement('span');
+  const buttonOpen = document.createElement('button');
+  const buttonClose = document.createElement('button');
 
   // create structure
   article.appendChild(title);
@@ -166,6 +168,8 @@ function createArticle(articleData) {
   article.appendChild(secondP);
   article.appendChild(thirdP);
   article.appendChild(span);
+  span.appendChild(buttonOpen);
+  span.appendChild(buttonClose);
 
   // add contents to elements
   title.textContent = articleData.title;
@@ -173,11 +177,20 @@ function createArticle(articleData) {
   firstP.textContent = articleData.firstParagraph;
   secondP.textContent = articleData.secondParagraph;
   thirdP.textContent = articleData.thirdParagraph;
+  buttonOpen.textContent = '\u25bc';
+  buttonClose.textContent = '\u25b2';
 
   // add class to elements
   article.classList.add('article');
   date.classList.add('date');
   span.classList.add('expandButton');
+  buttonClose.classList.add('hide-btn');
+
+  span.addEventListener('click', e => {
+    buttonOpen.classList.toggle('hide-btn');
+    buttonClose.classList.toggle('hide-btn');
+    article.classList.toggle('article-open');
+  });
 
   return article;
 }
