@@ -39,6 +39,9 @@ function createMenu(items) {
   const menu = document.createElement('div');
   const lists = document.createElement('ul');
 
+  // select menu button
+  const menuButton = document.querySelector('.menu-button');
+
   // structure elements
   menu.appendChild(lists);
 
@@ -51,18 +54,16 @@ function createMenu(items) {
     lists.appendChild(list);
   });
 
+  // toggle .menu-open on menu component
+  menuButton.addEventListener('click', e => {
+    menu.classList.toggle('menu--open');
+  });
+
   return menu;
 }
 
 // DOM selector for header and menu button
 const header = document.querySelector('.header');
-const menuButton = document.querySelector('.menu-button');
 
 // add menu component to header
 header.appendChild(createMenu(menuItems));
-
-// toggle .menu-open on menu component
-menuButton.addEventListener('click', e => {
-  const menu = document.querySelector('.menu');
-  menu.classList.toggle('menu--open');
-});
