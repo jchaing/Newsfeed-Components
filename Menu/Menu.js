@@ -47,6 +47,7 @@ function createMenu(items) {
 
   // add class to elements
   menu.classList.add('menu');
+  menuButton.classList.add('animated');
 
   items.forEach(item => {
     const list = document.createElement('li');
@@ -57,6 +58,7 @@ function createMenu(items) {
   // toggle .menu-open on menu component
   menuButton.addEventListener('click', e => {
     menu.classList.toggle('menu--open');
+    menuButton.classList.toggle('rotateIn');
   });
 
   return menu;
